@@ -9,41 +9,86 @@ if (!isset($_SESSION['user_data'])) {
 $userData = $_SESSION['user_data'];
 $ageCategory = $userData['usia_kategori'] ?? 'Dewasa';
 
-// Define weekly hours based on age category
-$weeklyHours = [
-    'Remaja' => [
-        'A' => 7.1,
-        'B' => 14.2,
-        'C' => 21.3,
-        'D' => 28.4,
-        'E' => 35.5
-    ],
-    'Dewasa Muda' => [
-        'A' => 14.2,
-        'B' => 28.4,
-        'C' => 42.6,
-        'D' => 56.8,
-        'E' => 71
-    ],
-    'Dewasa' => [
-        'A' => 14.2,
-        'B' => 28.4,
-        'C' => 42.6,
-        'D' => 56.8,
-        'E' => 71
-    ]
-];
+// Define options based on age category with correct values in MINUTES
+$options = [];
 
-// Get hours for current age category
-$currentWeeklyHours = $weeklyHours[$ageCategory] ?? $weeklyHours['Dewasa'];
-
-// Calculate daily hours (weekly / 7)
-$dailyHours = [];
-$categoryMap = [];
-foreach ($currentWeeklyHours as $key => $weeklyValue) {
-    $daily = round($weeklyValue / 7, 1);
-    $dailyHours[$key] = $daily;
-    $categoryMap[strval($daily)] = $key; // Map daily hours back to category (convert to string)
+if ($ageCategory === 'Remaja') {
+    $options = [
+        [
+            'label' => '1 jam per hari',
+            'daily_hours' => 1,
+            'weekly_hours' => 7,
+            'total_minutes' => 426,
+            'category' => 'Sangat Ringan'
+        ],
+        [
+            'label' => '2 jam per hari',
+            'daily_hours' => 2,
+            'weekly_hours' => 14,
+            'total_minutes' => 852,
+            'category' => 'Ringan'
+        ],
+        [
+            'label' => '3 jam per hari',
+            'daily_hours' => 3,
+            'weekly_hours' => 21,
+            'total_minutes' => 1278,
+            'category' => 'Sedang'
+        ],
+        [
+            'label' => '4 jam per hari',
+            'daily_hours' => 4,
+            'weekly_hours' => 28,
+            'total_minutes' => 1704,
+            'category' => 'Berat'
+        ],
+        [
+            'label' => '5 jam per hari',
+            'daily_hours' => 5,
+            'weekly_hours' => 35,
+            'total_minutes' => 2130,
+            'category' => 'Sangat Berat'
+        ]
+    ];
+} else {
+    // Dewasa Muda & Dewasa
+    $options = [
+        [
+            'label' => '2 jam per hari',
+            'daily_hours' => 2,
+            'weekly_hours' => 14,
+            'total_minutes' => 852,
+            'category' => 'Sangat Ringan'
+        ],
+        [
+            'label' => '4 jam per hari',
+            'daily_hours' => 4,
+            'weekly_hours' => 28,
+            'total_minutes' => 1704,
+            'category' => 'Ringan'
+        ],
+        [
+            'label' => '6 jam per hari',
+            'daily_hours' => 6,
+            'weekly_hours' => 42,
+            'total_minutes' => 2556,
+            'category' => 'Sedang'
+        ],
+        [
+            'label' => '8 jam per hari',
+            'daily_hours' => 8,
+            'weekly_hours' => 56,
+            'total_minutes' => 3408,
+            'category' => 'Berat'
+        ],
+        [
+            'label' => '10 jam per hari',
+            'daily_hours' => 10,
+            'weekly_hours' => 70,
+            'total_minutes' => 4260,
+            'category' => 'Sangat Berat'
+        ]
+    ];
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +99,7 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
     <title>Durasi Menonton - Netflix Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -212,7 +257,7 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
     <!-- Netflix Logo -->
     <div class="content-wrapper">
         <div class="fixed top-3 sm:top-4 md:top-6 left-3 sm:left-4 md:left-6 z-50">
-            <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-5 sm:h-6 md:h-8 lg:h-10 transition-all duration-300 hover:scale-110" style="filter: drop-shadow(0 4px 10px rgba(229, 9, 20, 0.6));">
+            <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-5 sm:h-6 md:h-8 lg:h-10 transition-all duration-300 hover:scale-110" style="filter: drop-shadow(0 4px 10px rgba(229, 9, 20, 0.6));">
         </div>
 
         <!-- Main Content -->
@@ -221,7 +266,7 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
                 <div class="main-container rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10">
                     <!-- Header -->
                     <div class="text-center mb-5 sm:mb-6 md:mb-8">
-                        <div class="flex justify-center mb-3 sm:mb-4">
+                        <div class="flex justify-center mb-4 sm:mb-5">
                             <div class="relative">
                                 <svg class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-netflix-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -229,12 +274,9 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
                                 <div class="absolute inset-0 blur-xl bg-netflix-red opacity-30"></div>
                             </div>
                         </div>
-                        <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-white leading-tight">
-                            Estimasi Waktu Menonton
+                        <h1 class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-4 sm:mb-5 text-white leading-relaxed px-2 sm:px-4 text-center">
+                            Jika kamu tidak menonton semua series sebelumnya, kira-kira berapa lama sih kamu menghabiskan waktu untuk menonton film atau series dalam sehari?
                         </h1>
-                        <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5 px-2 sm:px-4">
-                            Jika kamu tidak menonton semua series di atas, kira-kira berapa lama kamu habiskan untuk menonton film atau series secara terus-menerus dalam seminggu?
-                        </p>
                         <div class="category-badge rounded-lg sm:rounded-xl p-2 sm:p-3 inline-block">
                             <p class="text-gray-400 text-xs sm:text-sm">Kategori Usia:</p>
                             <p class="text-white font-bold text-sm sm:text-base md:text-lg"><?= htmlspecialchars($ageCategory) ?></p>
@@ -244,16 +286,16 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
                     <!-- Options -->
                     <form id="durationForm">
                         <div class="space-y-2 sm:space-y-3 md:space-y-4 mb-5 sm:mb-6 md:mb-8">
-                            <?php foreach ($dailyHours as $category => $hours): ?>
-                            <div class="option-card bg-gray-800 bg-opacity-40 border-2 border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-5" onclick="selectOption(<?= $hours ?>, '<?= $category ?>')">
+                            <?php foreach ($options as $index => $option): ?>
+                            <div class="option-card bg-gray-800 bg-opacity-40 border-2 border-gray-700 rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-5" 
+                                 onclick="selectOption(<?= $option['total_minutes'] ?>, '<?= $option['category'] ?>', <?= $option['daily_hours'] ?>, <?= $option['weekly_hours'] ?>)">
                                 <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="duration" value="<?= $hours ?>" data-category="<?= $category ?>" class="hidden">
+                                    <input type="radio" name="duration" value="<?= $option['total_minutes'] ?>" data-category="<?= $option['category'] ?>" class="hidden">
                                     <div class="flex-1">
                                         <div class="flex items-baseline space-x-1 sm:space-x-2">
-                                            <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"><?= $hours ?></span>
+                                            <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"><?= $option['daily_hours'] ?></span>
                                             <span class="text-xs sm:text-sm md:text-base text-gray-300">jam per hari</span>
                                         </div>
-                                        <p class="text-xs sm:text-sm text-gray-400 mt-1">≈ <?= $currentWeeklyHours[$category] ?> jam per minggu</p>
                                     </div>
                                     <svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-netflix-red opacity-0 check-icon transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
@@ -291,10 +333,14 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
     <script>
         let selectedValue = null;
         let selectedCategory = null;
+        let selectedDailyHours = null;
+        let selectedWeeklyHours = null;
 
-        function selectOption(hours, category) {
-            selectedValue = hours;
+        function selectOption(totalMinutes, category, dailyHours, weeklyHours) {
+            selectedValue = totalMinutes;
             selectedCategory = category;
+            selectedDailyHours = dailyHours;
+            selectedWeeklyHours = weeklyHours;
             
             // Remove all selected states
             document.querySelectorAll('.option-card').forEach(card => {
@@ -319,12 +365,6 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
             // Show loading
             showLoading();
             
-            // Calculate total hours based on daily hours
-            // Since this is for "Belum menonton", we'll use the selected daily hours
-            const dailyHours = selectedValue;
-            const weeklyHours = dailyHours * 7;
-            const totalMinutes = Math.round(weeklyHours * 60);
-            
             // Save to session
             fetch('../includes/save-duration.php', {
                 method: 'POST',
@@ -332,9 +372,9 @@ foreach ($currentWeeklyHours as $key => $weeklyValue) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    daily_hours: dailyHours,
-                    weekly_hours: weeklyHours,
-                    total_minutes: totalMinutes,
+                    daily_hours: selectedDailyHours,
+                    weekly_hours: selectedWeeklyHours,
+                    total_minutes: selectedValue,
                     category: selectedCategory,
                     source: 'kuisioner-durasi'
                 })

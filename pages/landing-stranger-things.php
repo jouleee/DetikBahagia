@@ -17,7 +17,7 @@ $userData = $_SESSION['user_data'];
     <title>Stranger Things - Netflix Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -36,7 +36,7 @@ $userData = $_SESSION['user_data'];
         body {
             font-family: 'Netflix Sans', Arial, sans-serif;
             background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
-                        url('../assets/images/Stranger Things Banner.png');
+                        url('../assets/images/Stranger\ Things\ Banner.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -68,7 +68,7 @@ $userData = $_SESSION['user_data'];
 
     <!-- Netflix Logo -->
     <div class="absolute top-6 left-6 z-50">
-        <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-8 sm:h-10">
+        <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-8 sm:h-10">
     </div>
 
     <!-- Main Content -->
@@ -78,14 +78,14 @@ $userData = $_SESSION['user_data'];
             <div class="bg-black bg-opacity-80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-red-900 border-opacity-30 shadow-2xl">
                 <!-- Film Logo/Title -->
                 <div class="text-center mb-8">
-                    <img src="../assets/images/Stranger logo.png" alt="Stranger Things" class="h-24 sm:h-32 mx-auto mb-6">
+                    <img src="../assets/images/Stranger logo.webp" alt="Stranger Things" class="h-24 sm:h-32 mx-auto mb-6">
                     <h1 class="text-2xl sm:text-3xl font-bold mb-4">Isi Kuisioner Film Berikut Ini</h1>
                     <p class="text-gray-300 text-sm sm:text-base">Sudah nonton? Isi kuisionernya sekarang</p>
                 </div>
 
                 <!-- Film Banner -->
                 <div class="relative rounded-2xl overflow-hidden mb-8 shadow-2xl">
-                    <img src="../assets/images/Stranger Things Banner.png" alt="Stranger Things Banner" class="w-full h-64 sm:h-80 object-cover">
+                    <img src="../assets/images/Stranger Things Banner.webp" alt="Stranger Things Banner" class="w-full h-64 sm:h-80 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 </div>
 

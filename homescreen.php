@@ -55,14 +55,14 @@
     <!-- Intro Screen 1 - Single N Logo -->
     <div id="intro1" class="fixed inset-0 z-50 bg-black flex items-center justify-center">
         <div class="text-center">
-            <img src="assets/images/logo n.png" alt="N Logo" class="w-32 h-32 mx-auto animate-fadeIn animate-logoGlow">
+            <img src="assets/images/logo n.webp" alt="N Logo" class="w-32 h-32 mx-auto animate-fadeIn animate-logoGlow">
         </div>
     </div>
 
     <!-- Intro Screen 2 - Full NETFLIX Logo -->
     <div id="intro2" class="fixed inset-0 z-40 bg-black flex items-center justify-center opacity-0">
         <div class="text-center">
-            <img src="assets/images/logo nitflix.png" alt="NETFLIX" class="h-20 mx-auto animate-fadeIn">
+            <img src="assets/images/logo nitflix.webp" alt="NETFLIX" class="h-20 mx-auto animate-fadeIn">
         </div>
     </div>
 

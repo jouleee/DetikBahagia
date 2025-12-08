@@ -37,26 +37,6 @@ $film = $data['film'];
 $question = $data['question'];
 $answer = $data['answer'];
 
-// Duration data per season (in minutes) - SESUAI SPESIFIKASI ANDA
-$durations = [
-    'stranger-things' => [
-        1 => 408,
-        2 => 467,
-        3 => 439,
-        4 => 782,
-        5 => 850  // Season 5 duration (estimasi)
-    ],
-    'wednesday' => [
-        1 => 413,
-        2 => 463
-    ],
-    'squid-game' => [
-        1 => 496,
-        2 => 428,
-        3 => 450  // Season 3 duration (estimasi)
-    ]
-];
-
 // Save answer
 if ($question === 'watched') {
     $_SESSION['quiz_data'][$film]['watched'] = $answer;
@@ -64,22 +44,21 @@ if ($question === 'watched') {
     // If belum, set duration to 0
     if ($answer === 'belum') {
         $_SESSION['quiz_data'][$film]['duration'] = 0;
-        $_SESSION['quiz_data'][$film]['season'] = 0;
+        $_SESSION['quiz_data'][$film]['season'] = [];
     }
 } elseif ($question === 'season') {
-    $season = intval($answer);
-    $_SESSION['quiz_data'][$film]['season'] = $season;
-    
-    // Calculate total duration from Season 1 to selected season
-    // LOGIKA PENTING: Jumlahkan dari Season 1 sampai Season yang dipilih
-    $totalDuration = 0;
-    for ($i = 1; $i <= $season; $i++) {
-        if (isset($durations[$film][$i])) {
-            $totalDuration += $durations[$film][$i];
-        }
+    // New logic: answer is array of selected seasons with total_minutes
+    if (isset($data['total_minutes'])) {
+        // Store selected seasons array
+        $_SESSION['quiz_data'][$film]['season'] = $answer; // array of {season, minutes}
+        // Store total duration from selected seasons
+        $_SESSION['quiz_data'][$film]['duration'] = intval($data['total_minutes']);
+    } else {
+        // Fallback for old format (single season number)
+        $season = intval($answer);
+        $_SESSION['quiz_data'][$film]['season'] = $season;
+        $_SESSION['quiz_data'][$film]['duration'] = 0;
     }
-    
-    $_SESSION['quiz_data'][$film]['duration'] = $totalDuration;
 }
 
 // Calculate total duration from all films
@@ -89,13 +68,14 @@ $_SESSION['quiz_data']['total_duration'] =
     $_SESSION['quiz_data']['squid-game']['duration'];
 
 // Log to file (optional)
+$answerLog = is_array($answer) ? json_encode($answer) : $answer;
 $logEntry = sprintf(
     "[%s] User: %s | Film: %s | Question: %s | Answer: %s | Duration: %d min\n",
     date('Y-m-d H:i:s'),
     $_SESSION['user_data']['nama'] ?? 'Unknown',
     $film,
     $question,
-    $answer,
+    $answerLog,
     $_SESSION['quiz_data'][$film]['duration'] ?? 0
 );
 

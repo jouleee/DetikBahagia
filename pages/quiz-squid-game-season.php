@@ -16,12 +16,12 @@ $userData = $_SESSION['user_data'];
     <title>Season Squid Game - Netflix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <style>
         body {
             font-family: 'Netflix Sans', Arial, sans-serif;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
-                        url('../assets/images/Squid Game Banner.png');
+                        url('../assets/images/Squid Game Banner.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -36,44 +36,50 @@ $userData = $_SESSION['user_data'];
 <body class="text-white min-h-screen">
     <div class="progress-bar"><div class="progress-fill"></div></div>
     <div class="absolute top-6 left-6 z-50">
-        <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-8 sm:h-10">
+        <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-8 sm:h-10">
     </div>
 
     <div class="min-h-screen flex items-center justify-center px-4 py-20">
         <div class="max-w-3xl w-full">
             <div class="bg-black bg-opacity-80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-green-900 border-opacity-30 shadow-2xl">
                 <div class="text-center mb-8">
-                    <img src="../assets/images/Squid logo.png" alt="Squid Game" class="h-16 sm:h-20 mx-auto mb-6">
+                    <img src="../assets/images/Squid logo.webp" alt="Squid Game" class="h-16 sm:h-20 mx-auto mb-6">
                     <div class="text-sm text-gray-400 mb-2">6/6</div>
                     <h2 class="text-2xl sm:text-3xl font-bold mb-4">Season berapa yang sudah pernah kamu tonton?</h2>
                 </div>
 
                 <form id="quizForm">
                     <div class="space-y-4 mb-8">
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(1)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 496)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="1" class="hidden">
-                                <div class="flex-1"><span class="text-lg font-semibold">Season 1</span></div>
+                                <input type="checkbox" name="season[]" value="496" class="hidden" data-season="1">
+                                <div class="flex-1">
+                                    <span class="text-lg font-semibold">Season 1</span>
+                                </div>
                                 <svg class="w-6 h-6 text-netflix-red opacity-0 check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(2)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 428)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="2" class="hidden">
-                                <div class="flex-1"><span class="text-lg font-semibold">Season 2</span></div>
+                                <input type="checkbox" name="season[]" value="428" class="hidden" data-season="2">
+                                <div class="flex-1">
+                                    <span class="text-lg font-semibold">Season 2</span>
+                                </div>
                                 <svg class="w-6 h-6 text-netflix-red opacity-0 check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(3)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 366)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="3" class="hidden">
-                                <div class="flex-1"><span class="text-lg font-semibold">Season 3</span></div>
+                                <input type="checkbox" name="season[]" value="366" class="hidden" data-season="3">
+                                <div class="flex-1">
+                                    <span class="text-lg font-semibold">Season 3</span>
+                                </div>
                                 <svg class="w-6 h-6 text-netflix-red opacity-0 check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                                 </svg>
@@ -104,21 +110,39 @@ $userData = $_SESSION['user_data'];
     </div>
 
     <script>
-        let selectedValue = null;
-        function selectOption(value) {
-            selectedValue = value;
-            document.querySelectorAll('.option-card').forEach(card => {
+        let totalMinutes = 0;
+        let selectedSeasons = [];
+
+        function toggleOption(card, minutes) {
+            const checkbox = card.querySelector('input[type="checkbox"]');
+            const checkIcon = card.querySelector('.check-icon');
+            
+            // Toggle checkbox
+            checkbox.checked = !checkbox.checked;
+            
+            // Update UI
+            if (checkbox.checked) {
+                card.classList.add('selected');
+                checkIcon.style.opacity = '1';
+                totalMinutes += minutes;
+                selectedSeasons.push({
+                    season: checkbox.dataset.season,
+                    minutes: minutes
+                });
+            } else {
                 card.classList.remove('selected');
-                card.querySelector('.check-icon').style.opacity = '0';
-            });
-            event.currentTarget.classList.add('selected');
-            event.currentTarget.querySelector('.check-icon').style.opacity = '1';
-            document.getElementById('nextBtn').disabled = false;
+                checkIcon.style.opacity = '0';
+                totalMinutes -= minutes;
+                selectedSeasons = selectedSeasons.filter(s => s.season !== checkbox.dataset.season);
+            }
+            
+            // Enable/disable next button
+            document.getElementById('nextBtn').disabled = selectedSeasons.length === 0;
         }
 
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            if (!selectedValue) return;
+            if (selectedSeasons.length === 0) return;
             
             // Show loading overlay
             showLoading();
@@ -129,16 +153,15 @@ $userData = $_SESSION['user_data'];
                 body: JSON.stringify({
                     film: 'squid-game',
                     question: 'season',
-                    answer: selectedValue
+                    answer: selectedSeasons,
+                    total_minutes: totalMinutes
                 })
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     // Add delay to show calculation animation
-                    setTimeout(() => {
-                        window.location.href = 'hasil.php';
-                    }, 1500);
+                    window.location.href = 'hasil.php';
                 }
             })
             .catch(error => {

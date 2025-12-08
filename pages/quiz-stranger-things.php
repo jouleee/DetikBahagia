@@ -17,7 +17,7 @@ $userData = $_SESSION['user_data'];
     <title>Kuisioner Stranger Things - Netflix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -36,7 +36,7 @@ $userData = $_SESSION['user_data'];
         body {
             font-family: 'Netflix Sans', Arial, sans-serif;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
-                        url('../assets/images/Stranger Things Banner.png');
+                        url('../assets/images/Stranger Things Banner.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -82,7 +82,7 @@ $userData = $_SESSION['user_data'];
 
     <!-- Netflix Logo -->
     <div class="absolute top-4 sm:top-6 left-4 sm:left-6 z-50">
-        <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-6 sm:h-8 lg:h-10">
+        <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-6 sm:h-8 lg:h-10">
     </div>
 
     <!-- Main Content -->
@@ -91,7 +91,7 @@ $userData = $_SESSION['user_data'];
             <div class="bg-black bg-opacity-80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 xl:p-12 border border-red-900 border-opacity-30 shadow-2xl">
                 <!-- Header -->
                 <div class="text-center mb-6 sm:mb-8">
-                    <img src="../assets/images/Stranger logo.png" alt="Stranger Things" class="h-12 sm:h-16 lg:h-20 mx-auto mb-4 sm:mb-6">
+                    <img src="../assets/images/Stranger logo.webp" alt="Stranger Things" class="h-12 sm:h-16 lg:h-20 mx-auto mb-4 sm:mb-6">
                     <div class="text-xs sm:text-sm text-gray-400 mb-2">1/6</div>
                     <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 leading-tight">Pernah Nonton Stranger Things?</h2>
                 </div>

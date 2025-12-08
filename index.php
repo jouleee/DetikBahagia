@@ -1,3 +1,11 @@
+<?php
+// Clear any existing session data when user opens index page
+// This ensures fresh start for each quiz attempt
+session_start();
+session_unset();
+session_destroy();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,7 +14,7 @@
     <title>Nitflix - DetikBahagia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -119,14 +127,14 @@
     <!-- Intro Screen 1 - Single N Logo -->
     <div id="intro1" class="fixed inset-0 z-50 bg-black flex items-center justify-center">
         <div class="text-center">
-            <img src="assets/images/logo n.png" alt="N Logo" id="logo1" class="logo fade-in animate-logoGlow">
+            <img src="assets/images/logo n.webp" alt="N Logo" id="logo1" class="logo fade-in animate-logoGlow">
         </div>
     </div>
 
     <!-- Intro Screen 2 - Full NETFLIX Logo -->
     <div id="intro2" class="fixed inset-0 z-40 bg-black flex items-center justify-center opacity-0">
         <div class="text-center">
-            <img src="assets/images/logo nitflix.png" alt="NETFLIX" class="h-20 mx-auto animate-fadeIn">
+            <img src="assets/images/logo nitflix.webp" alt="NETFLIX" class="h-20 mx-auto animate-fadeIn">
         </div>
     </div>
 
@@ -140,7 +148,7 @@
 
         <!-- Netflix Logo Header -->
         <div class="relative z-10 pt-4 md:pt-8 text-center">
-            <img src="assets/images/logo nitflix.png" alt="NETFLIX" class="logo h-12 sm:h-16 md:h-20 lg:h-24 mx-auto">
+            <img src="assets/images/logo nitflix.webp" alt="NETFLIX" class="logo h-12 sm:h-16 md:h-20 lg:h-24 mx-auto">
         </div>
 
         <!-- Questionnaire Modal -->
@@ -297,14 +305,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                loadingOverlay.classList.add('hidden');
-                
                 if (data.status === 'success') {
-                    showNotification('Data berhasil disimpan!', 'success');
-                    setTimeout(() => {
-                        window.location.href = 'landing_page.php';
-                    }, 1500);
+                    // Langsung redirect tanpa notifikasi
+                    window.location.href = 'landing_page.php';
                 } else {
+                    loadingOverlay.classList.add('hidden');
                     showNotification(data.message || 'Terjadi kesalahan!', 'error');
                 }
             })

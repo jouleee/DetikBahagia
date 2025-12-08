@@ -16,12 +16,12 @@ $userData = $_SESSION['user_data'];
     <title>Kuisioner Squid Game - Netflix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <style>
         body {
             font-family: 'Netflix Sans', Arial, sans-serif;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
-                        url('../assets/images/Squid Game Banner.png');
+                        url('../assets/images/Squid Game Banner.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -36,14 +36,14 @@ $userData = $_SESSION['user_data'];
 <body class="text-white min-h-screen">
     <div class="progress-bar"><div class="progress-fill"></div></div>
     <div class="absolute top-6 left-6 z-50">
-        <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-8 sm:h-10">
+        <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-8 sm:h-10">
     </div>
 
     <div class="min-h-screen flex items-center justify-center px-4 py-20">
         <div class="max-w-3xl w-full">
             <div class="bg-black bg-opacity-80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-green-900 border-opacity-30 shadow-2xl">
                 <div class="text-center mb-8">
-                    <img src="../assets/images/Squid logo.png" alt="Squid Game" class="h-16 sm:h-20 mx-auto mb-6">
+                    <img src="../assets/images/Squid logo.webp" alt="Squid Game" class="h-16 sm:h-20 mx-auto mb-6">
                     <div class="text-sm text-gray-400 mb-2">5/6</div>
                     <h2 class="text-2xl sm:text-3xl font-bold mb-4">Pernah Nonton Squid Game?</h2>
                 </div>

@@ -1,7 +1,7 @@
 # 🎬 Nitflix - DetikBahagia Quiz Platform
 
 <div align="center">
-  <img src="assets/images/logo nitflix.png" alt="Nitflix Logo" width="200">
+  <img src="assets/images/logo nitflix.webp" alt="Nitflix Logo" width="200">
   
   **Interactive Netflix-themed Quiz Platform untuk Mengukur Kebiasaan Menonton**
   
@@ -32,13 +32,13 @@
 ## 🚀 Demo
 
 ### Landing Page
-<img src="assets/images/README-landing.png" alt="Landing Page" width="600">
+<img src="assets/images/README-landing.webp" alt="Landing Page" width="600">
 
 ### Kuisioner Durasi
-<img src="assets/images/README-quiz.png" alt="Quiz Page" width="600">
+<img src="assets/images/README-quiz.webp" alt="Quiz Page" width="600">
 
 ### Halaman Hasil
-<img src="assets/images/README-result.png" alt="Result Page" width="600">
+<img src="assets/images/README-result.webp" alt="Result Page" width="600">
 
 ---
 
@@ -69,11 +69,11 @@ DetikBahagia/
 │   ├── css/
 │   │   └── netflix-enhanced.css
 │   ├── images/
-│   │   ├── logo nitflix.png
-│   │   ├── logo n.png
-│   │   ├── Stranger Things Banner.png
-│   │   ├── Wednesday banner.png
-│   │   └── Squid Game Banner.png
+│   │   ├── logo nitflix.webp
+│   │   ├── logo n.webp
+│   │   ├── Stranger Things Banner.webp
+│   │   ├── Wednesday banner.webp
+│   │   └── Squid Game Banner.webp
 │   └── js/
 │       └── netflix-enhanced.js
 ├── includes/

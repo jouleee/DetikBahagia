@@ -17,7 +17,7 @@ $userData = $_SESSION['user_data'];
     <title>Season Stranger Things - Netflix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -36,7 +36,7 @@ $userData = $_SESSION['user_data'];
         body {
             font-family: 'Netflix Sans', Arial, sans-serif;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
-                        url('../assets/images/Stranger Things Banner.png');
+                        url('../assets/images/Stranger Things Banner.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -82,7 +82,7 @@ $userData = $_SESSION['user_data'];
 
     <!-- Netflix Logo -->
     <div class="absolute top-6 left-6 z-50">
-        <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-8 sm:h-10">
+        <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-8 sm:h-10">
     </div>
 
     <!-- Main Content -->
@@ -91,7 +91,7 @@ $userData = $_SESSION['user_data'];
             <div class="bg-black bg-opacity-80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-red-900 border-opacity-30 shadow-2xl">
                 <!-- Header -->
                 <div class="text-center mb-8">
-                    <img src="../assets/images/Stranger logo.png" alt="Stranger Things" class="h-16 sm:h-20 mx-auto mb-6">
+                    <img src="../assets/images/Stranger logo.webp" alt="Stranger Things" class="h-16 sm:h-20 mx-auto mb-6">
                     <div class="text-sm text-gray-400 mb-2">2/6</div>
                     <h2 class="text-2xl sm:text-3xl font-bold mb-4">Season berapa yang sudah pernah kamu tonton?</h2>
                 </div>
@@ -102,9 +102,9 @@ $userData = $_SESSION['user_data'];
                     <input type="hidden" name="question" value="season">
                     
                     <div class="space-y-4 mb-8">
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(1)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 406)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="1" class="hidden">
+                                <input type="checkbox" name="season[]" value="406" class="hidden" data-season="1">
                                 <div class="flex-1">
                                     <span class="text-lg font-semibold">Season 1</span>
                                 </div>
@@ -114,9 +114,9 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(2)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 467)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="2" class="hidden">
+                                <input type="checkbox" name="season[]" value="467" class="hidden" data-season="2">
                                 <div class="flex-1">
                                     <span class="text-lg font-semibold">Season 2</span>
                                 </div>
@@ -126,9 +126,9 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(3)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 439)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="3" class="hidden">
+                                <input type="checkbox" name="season[]" value="439" class="hidden" data-season="3">
                                 <div class="flex-1">
                                     <span class="text-lg font-semibold">Season 3</span>
                                 </div>
@@ -138,23 +138,11 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(4)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 782)">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="4" class="hidden">
+                                <input type="checkbox" name="season[]" value="782" class="hidden" data-season="4">
                                 <div class="flex-1">
                                     <span class="text-lg font-semibold">Season 4</span>
-                                </div>
-                                <svg class="w-6 h-6 text-netflix-red opacity-0 check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </label>
-                        </div>
-
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="selectOption(5)">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="season" value="5" class="hidden">
-                                <div class="flex-1">
-                                    <span class="text-lg font-semibold">Season 5</span>
                                 </div>
                                 <svg class="w-6 h-6 text-netflix-red opacity-0 check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
@@ -199,30 +187,40 @@ $userData = $_SESSION['user_data'];
     </div>
 
     <script>
-        let selectedValue = null;
+        let totalMinutes = 0;
+        let selectedSeasons = [];
 
-        function selectOption(value) {
-            selectedValue = value;
+        function toggleOption(card, minutes) {
+            const checkbox = card.querySelector('input[type="checkbox"]');
+            const checkIcon = card.querySelector('.check-icon');
             
-            // Remove all selected states
-            document.querySelectorAll('.option-card').forEach(card => {
+            // Toggle checkbox
+            checkbox.checked = !checkbox.checked;
+            
+            // Update UI
+            if (checkbox.checked) {
+                card.classList.add('selected');
+                checkIcon.style.opacity = '1';
+                totalMinutes += minutes;
+                selectedSeasons.push({
+                    season: checkbox.dataset.season,
+                    minutes: minutes
+                });
+            } else {
                 card.classList.remove('selected');
-                card.querySelector('.check-icon').style.opacity = '0';
-            });
+                checkIcon.style.opacity = '0';
+                totalMinutes -= minutes;
+                selectedSeasons = selectedSeasons.filter(s => s.season !== checkbox.dataset.season);
+            }
             
-            // Add selected state to clicked option
-            const selectedCard = event.currentTarget;
-            selectedCard.classList.add('selected');
-            selectedCard.querySelector('.check-icon').style.opacity = '1';
-            
-            // Enable next button
-            document.getElementById('nextBtn').disabled = false;
+            // Enable/disable next button
+            document.getElementById('nextBtn').disabled = selectedSeasons.length === 0;
         }
 
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            if (!selectedValue) return;
+            if (selectedSeasons.length === 0) return;
             
             // Show loading overlay
             showLoading();
@@ -236,16 +234,15 @@ $userData = $_SESSION['user_data'];
                 body: JSON.stringify({
                     film: 'stranger-things',
                     question: 'season',
-                    answer: selectedValue
+                    answer: selectedSeasons,
+                    total_minutes: totalMinutes
                 })
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    setTimeout(() => {
-                        // Go to next film
-                        window.location.href = 'landing-wednesday.php';
-                    }, 1000);
+                    // Go to next film
+                    window.location.href = 'landing-wednesday.php';
                 }
             })
             .catch(error => {

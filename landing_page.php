@@ -17,7 +17,7 @@ $userData = $_SESSION['user_data'];
     <title>Nitflix - DetikBahagia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -197,7 +197,7 @@ $userData = $_SESSION['user_data'];
     <div class="min-h-screen flex flex-col relative" style="z-index: 3;">
         <!-- Netflix Logo Header -->
         <div class="relative z-10 pt-5 sm:pt-6 md:pt-8 pb-3 sm:pb-4 text-center flex-shrink-0">
-            <img src="assets/images/logo nitflix.png" alt="NETFLIX" class="h-10 sm:h-12 md:h-16 lg:h-18 mx-auto">
+            <img src="assets/images/logo nitflix.webp" alt="NETFLIX" class="h-10 sm:h-12 md:h-16 lg:h-18 mx-auto">
         </div>
 
         <!-- Main Content -->
@@ -207,24 +207,24 @@ $userData = $_SESSION['user_data'];
                 <!-- Stranger Things -->
                 <div class="series-card" data-series="stranger-things">
                     <div class="relative">
-                        <img src="assets/images/Stranger Things Banner.png" alt="Stranger Things" class="series-banner">
-                        <img src="assets/images/Stranger logo.png" alt="Stranger Things Logo" class="series-logo">
+                        <img src="assets/images/Stranger Things Banner.webp" alt="Stranger Things" class="series-banner">
+                        <img src="assets/images/Stranger logo.webp" alt="Stranger Things Logo" class="series-logo">
                     </div>
                 </div>
 
                 <!-- Wednesday -->
                 <div class="series-card" data-series="wednesday">
                     <div class="relative">
-                        <img src="assets/images/Wednesday banner.png" alt="Wednesday" class="series-banner">
-                        <img src="assets/images/Wednesday logo.png" alt="Wednesday Logo" class="series-logo">
+                        <img src="assets/images/Wednesday banner.webp" alt="Wednesday" class="series-banner">
+                        <img src="assets/images/Wednesday logo.webp" alt="Wednesday Logo" class="series-logo">
                     </div>
                 </div>
 
                 <!-- Squid Game -->
                 <div class="series-card" data-series="squid-game">
                     <div class="relative">
-                        <img src="assets/images/Squid Game Banner.png" alt="Squid Game" class="series-banner">
-                        <img src="assets/images/Squid logo.png" alt="Squid Game Logo" class="series-logo">
+                        <img src="assets/images/Squid Game Banner.webp" alt="Squid Game" class="series-banner">
+                        <img src="assets/images/Squid logo.webp" alt="Squid Game Logo" class="series-logo">
                     </div>
                 </div>
             </div>

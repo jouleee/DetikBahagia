@@ -16,76 +16,76 @@ $totalHours = round($totalMinutes / 60, 1);
 // Get age category
 $ageCategory = $userData['usia_kategori'] ?? 'Dewasa';
 
-// Define range limits based on age category
-$ranges = [
+// Define range limits in MINUTES based on age category
+$rangesInMinutes = [
     'Remaja' => [
-        'A' => 7.1,
-        'B' => 14.2,
-        'C' => 21.3,
-        'D' => 28.4,
-        'E' => 35.5
+        'A' => 426,      // 0-426: Sangat Ringan
+        'B' => 852,      // 427-852: Ringan
+        'C' => 1278,     // 853-1278: Sedang
+        'D' => 1704,     // 1279-1704: Berat
+        'E' => 2130      // 1705-2130: Sangat Berat
     ],
     'Dewasa Muda' => [
-        'A' => 14.2,
-        'B' => 28.4,
-        'C' => 42.6,
-        'D' => 56.8,
-        'E' => 71
+        'A' => 852,      // 0-852: Sangat Ringan (20%)
+        'B' => 1704,     // 853-1704: Ringan (40%)
+        'C' => 2556,     // 1705-2556: Sedang (60%)
+        'D' => 3408,     // 2557-3408: Berat (80%)
+        'E' => 4260      // 3409-4260: Sangat Berat (100%)
     ],
     'Dewasa' => [
-        'A' => 14.2,
-        'B' => 28.4,
-        'C' => 42.6,
-        'D' => 56.8,
-        'E' => 71
+        'A' => 852,      // 0-852: Sangat Ringan (20%)
+        'B' => 1704,     // 853-1704: Ringan (40%)
+        'C' => 2556,     // 1705-2556: Sedang (60%)
+        'D' => 3408,     // 2557-3408: Berat (80%)
+        'E' => 4260      // 3409-4260: Sangat Berat (100%)
     ]
 ];
 
-$currentRanges = $ranges[$ageCategory] ?? $ranges['Dewasa'];
+$currentRanges = $rangesInMinutes[$ageCategory] ?? $rangesInMinutes['Dewasa'];
 
-// Determine category based on total hours
+// Determine category based on total MINUTES
 $category = '';
 $categoryData = [];
 
-if ($totalHours < $currentRanges['A']) {
+if ($totalMinutes <= $currentRanges['A']) {
     $category = 'Sangat Ringan';
     $categoryData = [
         'label' => 'Sangat Ringan',
-        'percentage' => round(($totalHours / $currentRanges['E']) * 100),
+        'percentage' => 20,
         'color' => 'bg-green-500',
         'border' => 'border-green-500',
         'icon' => 'info',
-        'description' => 'Jam nontonmu tergolong sedikit. Good balance, keep it up!'
+        'description' => 'Jam nontonmu tergolong sehat. Good balance, keep it up!!'
     ];
-} elseif ($totalHours >= $currentRanges['A'] && $totalHours < $currentRanges['B']) {
+} elseif ($totalMinutes > $currentRanges['A'] && $totalMinutes <= $currentRanges['B']) {
     $category = 'Ringan';
     $categoryData = [
         'label' => 'Ringan',
-        'percentage' => round(($totalHours / $currentRanges['E']) * 100),
+        'percentage' => 40,
         'color' => 'bg-teal-500',
         'border' => 'border-teal-500', 
         'icon' => 'info',
-        'description' => 'Kamu masih di batas wajar. Senal aja tapi tetap jaga ritme ya!'
+        'description' => 'Kamu masih di batas wajar. Santai aja, tapi tetap jaga ritme ya!'
     ];
-} elseif ($totalHours >= $currentRanges['B'] && $totalHours < $currentRanges['C']) {
+} elseif ($totalMinutes > $currentRanges['B'] && $totalMinutes <= $currentRanges['C']) {
     $category = 'Sedang';
     $categoryData = [
         'label' => 'Sedang',
-        'percentage' => round(($totalHours / $currentRanges['E']) * 100),
+        'percentage' => 60,
         'color' => 'bg-orange-500',
         'border' => 'border-orange-500',
         'icon' => 'warning',
-        'description' => 'Lumayan sering nonton ini. Nggak apa-apa tapi tetap imbang dengan aktivitas lain!'
+        'description' => 'Lumayan sering nonton nih. Nggak apa-apa, asal tetap imbang dengan aktivitas lain!'
     ];
-} elseif ($totalHours >= $currentRanges['C'] && $totalHours < $currentRanges['D']) {
+} elseif ($totalMinutes > $currentRanges['C'] && $totalMinutes <= $currentRanges['D']) {
     $category = 'Berat';
     $categoryData = [
         'label' => 'Berat',
-        'percentage' => round(($totalHours / $currentRanges['E']) * 100),
+        'percentage' => 80,
         'color' => 'bg-red-500',
         'border' => 'border-red-500',
         'icon' => 'alert',
-        'description' => 'Wah, jam nontonmu mulai tinggi. Take a breath—seresah oleh makian enjoy filmnya!'
+        'description' => 'Wah, jam nontonmu mulai tinggi. Take a breather sesekali, biar makin enjoy filmnya!'
     ];
 } else {
     $category = 'Sangat Berat';
@@ -95,7 +95,7 @@ if ($totalHours < $currentRanges['A']) {
         'color' => 'bg-red-600',
         'border' => 'border-red-600',
         'icon' => 'alert',
-        'description' => 'Jam nontonmu cukup tinggi. Kamu adalah sensuan kok, coba sekedar jeda aja dulu feels good.'
+        'description' => 'Jam nontonmu cukup intens. Kamu nggak sendirian kok, coba selipkan jeda biar tetap feels good.'
     ];
 }
 
@@ -154,7 +154,7 @@ $formattedTime = formatTime($totalMinutes);
     <title>Hasil Analisis - Netflix Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/images/logo n.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo n.webp" type="image/webp">
     <script>
         tailwind.config = {
             theme: {
@@ -178,6 +178,7 @@ $formattedTime = formatTime($totalMinutes);
         
         .progress-ring {
             transform: rotate(-90deg);
+            transform-origin: center;
         }
         
         .progress-circle {
@@ -185,15 +186,11 @@ $formattedTime = formatTime($totalMinutes);
             stroke-dashoffset: 219.91;
             transition: stroke-dashoffset 2s ease-in-out;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 8px currentColor);
+            transform-origin: center;
         }
         
         .progress-bg {
             stroke-dasharray: 219.91;
-        }
-        
-        .progress-container {
-            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
         }
         
         .advice-card {
@@ -222,7 +219,7 @@ $formattedTime = formatTime($totalMinutes);
 <body class="text-white min-h-screen">
     <!-- Netflix Logo -->
     <div class="absolute top-4 sm:top-6 left-4 sm:left-6 z-50">
-        <img src="../assets/images/logo nitflix.png" alt="NETFLIX" class="h-6 sm:h-8 lg:h-10">
+        <img src="../assets/images/logo nitflix.webp" alt="NETFLIX" class="h-6 sm:h-8 lg:h-10">
     </div>
 
     <!-- Main Content -->
@@ -248,24 +245,46 @@ $formattedTime = formatTime($totalMinutes);
                     <!-- Progress Circle -->
                     <div class="text-center">
                         <div class="relative inline-block progress-container">
-                            <svg class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48" viewBox="0 0 100 100">
+                            <svg class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 progress-ring" viewBox="0 0 100 100">
                                 <!-- Background circle -->
                                 <circle 
                                     cx="50" cy="50" r="35" 
                                     stroke="rgba(40, 40, 40, 0.9)" 
                                     stroke-width="10" 
                                     fill="none"
-                                    class="progress-bg"
                                 ></circle>
                                 <!-- Progress circle -->
+                                <?php
+                                // Set stroke color based on category
+                                $strokeColor = '#10B981'; // default green
+                                switch($categoryData['color']) {
+                                    case 'bg-green-500':
+                                        $strokeColor = '#10B981';
+                                        break;
+                                    case 'bg-teal-500':
+                                        $strokeColor = '#14B8A6';
+                                        break;
+                                    case 'bg-orange-500':
+                                        $strokeColor = '#F59E0B';
+                                        break;
+                                    case 'bg-red-500':
+                                        $strokeColor = '#EF4444';
+                                        break;
+                                    case 'bg-red-600':
+                                        $strokeColor = '#DC2626';
+                                        break;
+                                }
+                                ?>
                                 <circle 
                                     cx="50" cy="50" r="35" 
-                                    stroke="<?= $categoryData['color'] === 'bg-green-500' ? '#10B981' : ($categoryData['color'] === 'bg-teal-500' ? '#14B8A6' : ($categoryData['color'] === 'bg-orange-500' ? '#F59E0B' : ($categoryData['color'] === 'bg-red-500' ? '#EF4444' : '#DC2626'))) ?>" 
+                                    stroke="<?= $strokeColor ?>" 
                                     stroke-width="10" 
                                     fill="none"
                                     stroke-linecap="round"
-                                    class="progress-circle progress-ring"
+                                    class="progress-circle"
                                     id="progressCircle"
+                                    stroke-dasharray="219.91"
+                                    stroke-dashoffset="219.91"
                                 ></circle>
                             </svg>
                             <div class="absolute inset-0 flex flex-col items-center justify-center">
@@ -316,21 +335,21 @@ $formattedTime = formatTime($totalMinutes);
                 <div class="space-y-3 sm:space-y-4">
                     <?php foreach ($currentAdvice as $index => $advice): ?>
                     <div class="bg-black bg-opacity-60 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-gray-800 hover:border-netflix-red transition-colors duration-300">
-                        <p class="text-gray-200 text-xs sm:text-sm leading-relaxed"><?= $advice ?></p>
+                        <p class="text-gray-200 text-xs sm:text-sm leading-relaxed text-justify"><?= $advice ?></p>
                     </div>
                     <?php endforeach; ?>
                 </div>
             </div>
 
-            <!-- Action Button -->
+            <!-- Action Buttons -->
             <div class="text-center mt-4 sm:mt-6">
                 <button 
-                    onclick="window.location.href='../index.php'"
+                    onclick="finishQuiz()"
                     class="bg-netflix-red hover:bg-red-700 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 lg:px-10 rounded-lg sm:rounded-xl text-sm sm:text-base transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-red-500/50 inline-flex items-center space-x-2"
                 >
                     <span>Selesai & Keluar</span>
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>
                 </button>
             </div>
@@ -381,6 +400,67 @@ $formattedTime = formatTime($totalMinutes);
                 
             }, 800);
         });
+        
+        // Function to finish quiz (clear session and go to index)
+        function finishQuiz() {
+            // Show loading
+            showLoading('Memproses...');
+            
+            // Clear session via AJAX
+            fetch('../includes/clear_session.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    setTimeout(() => {
+                        window.location.href = '../index.php';
+                    }, 500);
+                } else {
+                    hideLoading();
+                    alert('Terjadi kesalahan. Silakan coba lagi.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Even if error, still redirect to index
+                setTimeout(() => {
+                    window.location.href = '../index.php';
+                }, 500);
+            });
+        }
+        
+        // Loading overlay functions
+        function showLoading(message = 'Memproses...') {
+            const loadingHTML = `
+                <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="mb-4">
+                            <div class="w-16 h-16 border-4 border-netflix-red border-t-transparent rounded-full animate-spin mx-auto"></div>
+                        </div>
+                        <div class="text-white text-lg font-semibold mb-2">${message}</div>
+                        <div class="text-gray-300 text-sm">Mohon tunggu sebentar</div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', loadingHTML);
+        }
+        
+        function hideLoading() {
+            const overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+        
+        // Prevent going back after finishing quiz
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
     </script>
 </body>
 </html>
