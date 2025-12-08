@@ -30,12 +30,24 @@ $_SESSION['user_choice'] = [
     'ip_address' => $_SERVER['REMOTE_ADDR'] ?? 'unknown'
 ];
 
+// If skip_quiz is true (user clicked "Belum"), initialize quiz_data with all "belum"
+if (isset($data['skip_quiz']) && $data['skip_quiz'] === true) {
+    $_SESSION['quiz_data'] = [
+        'stranger-things' => ['watched' => 'belum', 'season' => 0, 'duration' => 0],
+        'wednesday' => ['watched' => 'belum', 'season' => 0, 'duration' => 0],
+        'squid-game' => ['watched' => 'belum', 'season' => 0, 'duration' => 0],
+        'total_duration' => 0,
+        'skipped_to_duration' => true
+    ];
+}
+
 // Optional: Log to file
 $logEntry = sprintf(
-    "[%s] User: %s | Choice: %s | IP: %s\n",
+    "[%s] User: %s | Choice: %s | Skip Quiz: %s | IP: %s\n",
     date('Y-m-d H:i:s'),
     $_SESSION['user_data']['nama'] ?? 'Unknown',
     $data['choice'],
+    isset($data['skip_quiz']) && $data['skip_quiz'] ? 'Yes' : 'No',
     $_SERVER['REMOTE_ADDR'] ?? 'unknown'
 );
 
@@ -54,6 +66,7 @@ echo json_encode([
     'data' => [
         'choice' => $data['choice'],
         'user' => $_SESSION['user_data']['nama'] ?? 'Unknown',
+        'skip_quiz' => isset($data['skip_quiz']) && $data['skip_quiz'],
         'redirect' => $data['choice'] === 'pernah' ? 'page-a.php' : 'page-b.php'
     ]
 ]);

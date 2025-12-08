@@ -1,12 +1,65 @@
-# DetikBahagia - Netflix Style Questionnaire
+# 🎬 Nitflix - DetikBahagia Quiz Platform
 
-Sistem kuisioner interaktif dengan tema design yang sangat mirip Netflix dengan pengalaman visual premium dan fitur-fitur modern.
+<div align="center">
+  <img src="assets/images/logo nitflix.png" alt="Nitflix Logo" width="200">
+  
+  **Interactive Netflix-themed Quiz Platform untuk Mengukur Kebiasaan Menonton**
+  
+  [![PHP](https://img.shields.io/badge/PHP-7.4+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+</div>
 
-## 🎬 Demo Pages
+---
 
-1. **Classic Version** (`index.php`) - Versi dengan struktur file terorganisir
-2. **Enhanced Version** (`homescreen.php`) - Versi dengan Tailwind CSS dan efek premium
-3. **Demo Showcase** (`demo.php`) - Halaman demo untuk melihat semua fitur
+## 📋 Deskripsi Project
+
+**Nitflix** adalah platform kuisioner interaktif dengan tema Netflix yang dirancang untuk menganalisis kebiasaan menonton pengguna terhadap series populer seperti **Stranger Things**, **Wednesday**, dan **Squid Game**. Platform ini menggunakan sistem kategorisasi berbasis usia dan durasi menonton untuk memberikan insight personalisasi kepada setiap pengguna.
+
+### ✨ Fitur Utama
+
+- 🎯 **Kuisioner Multi-Series**: Quiz untuk 3 series Netflix populer
+- 👥 **Kategorisasi Usia**: Remaja (12-19), Dewasa Muda (20-30), Dewasa (31-70)
+- ⏱️ **Estimasi Durasi Dinamis**: Perhitungan otomatis berdasarkan kategori usia
+- 📊 **Hasil Personalisasi**: 5 kategori intensitas (Sangat Ringan - Sangat Berat)
+- 🎨 **UI Netflix-Style**: Desain responsif dengan nuansa Netflix authentic
+- 📱 **Fully Responsive**: Optimal untuk Desktop, Tablet, dan Mobile
+- 🔄 **Loading Effects**: Smooth transitions dan animasi loading
+- 💾 **Session Management**: Data tersimpan di PHP session dengan logging
+
+---
+
+## 🚀 Demo
+
+### Landing Page
+<img src="assets/images/README-landing.png" alt="Landing Page" width="600">
+
+### Kuisioner Durasi
+<img src="assets/images/README-quiz.png" alt="Quiz Page" width="600">
+
+### Halaman Hasil
+<img src="assets/images/README-result.png" alt="Result Page" width="600">
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Tailwind CSS v3.x** - Utility-first CSS framework
+- **Vanilla JavaScript** - Form handling & animations
+- **Google Fonts** - Netflix Sans font family
+
+### Backend
+- **PHP 7.4+** - Server-side logic
+- **Session Management** - State persistence
+- **File Logging** - Activity tracking
+
+### Design
+- **Netflix Design System** - Color palette & typography
+- **Responsive Design** - Mobile-first approach
+- **CSS Animations** - Smooth transitions & effects
+
+---
 
 ## 📁 Struktur Project
 
@@ -14,232 +67,325 @@ Sistem kuisioner interaktif dengan tema design yang sangat mirip Netflix dengan 
 DetikBahagia/
 ├── assets/
 │   ├── css/
-│   │   ├── style.css              # Styling utama
-│   │   └── netflix-enhanced.css   # Enhanced Netflix styling
-│   ├── js/
-│   │   ├── script.js              # JavaScript utama
-│   │   └── netflix-enhanced.js    # Enhanced interactive effects
-│   └── images/
-│       ├── logo n.png             # Logo N Netflix
-│       └── logo nitflix.png       # Logo NETFLIX lengkap
+│   │   └── netflix-enhanced.css
+│   ├── images/
+│   │   ├── logo nitflix.png
+│   │   ├── logo n.png
+│   │   ├── Stranger Things Banner.png
+│   │   ├── Wednesday banner.png
+│   │   └── Squid Game Banner.png
+│   └── js/
+│       └── netflix-enhanced.js
 ├── includes/
-│   └── process_form.php           # Backend processing form
+│   ├── process_form.php          # Proses data user
+│   ├── save_choice.php            # Save pilihan Pernah/Belum
+│   ├── save-quiz.php              # Save jawaban quiz per series
+│   └── save-duration.php          # Save data durasi menonton
 ├── pages/
-│   ├── questionnaire.php          # Halaman konfirmasi data
-│   └── main-questionnaire.php     # Template kuisioner utama
+│   ├── landing-stranger-things.php
+│   ├── landing-wednesday.php
+│   ├── landing-squid-game.php
+│   ├── quiz-stranger-things.php
+│   ├── quiz-stranger-things-season.php
+│   ├── quiz-wednesday.php
+│   ├── quiz-wednesday-season.php
+│   ├── quiz-squid-game.php
+│   ├── quiz-squid-game-season.php
+│   ├── kuisioner-durasi.php       # Kuisioner untuk user "Belum"
+│   └── hasil.php                  # Result page
 ├── logs/
-│   └── user_data.log              # Log aktivitas user (auto-generated)
-├── index.php                      # Halaman utama (Classic Version)
-├── homescreen.php                 # Enhanced Version dengan Tailwind CSS
-├── demo.php                       # Demo showcase page
-└── config.php                     # Konfigurasi aplikasi
+│   ├── submissions.log
+│   ├── choices.log
+│   ├── quiz-answers.log
+│   └── duration-quiz.log
+├── index.php                      # Entry point
+├── landing_page.php               # Main landing page
+├── FLOW_KUISIONER.md
+├── DOKUMENTASI_KUISIONER_DURASI.md
+└── README.md
 ```
-
-## ✨ Fitur Utama
-
-### 🎨 Visual Features
-- **Netflix-inspired Design** dengan warna signature #E50914
-- **Intro Sequence** mirip Netflix dengan animasi logo
-- **Smooth Animations** dan transisi yang halus
-- **Glassmorphism Effects** untuk tampilan modern
-- **Particle System** dengan efek floating particles
-- **3D Hover Effects** pada modal dan elemen interaktif
-- **Responsive Design** untuk semua device
-
-### 🔧 Technical Features
-- **PHP Backend** dengan validasi server-side
-- **AJAX Form Submission** untuk pengalaman seamless
-- **Session Management** untuk menyimpan data user
-- **Input Sanitization** dan security measures
-- **Real-time Validation** dengan visual feedback
-- **Error Handling** yang comprehensive
-- **Accessibility Support** (ARIA labels, keyboard navigation)
-
-### 🎯 Interactive Features
-- **Mouse Follow Particles** yang mengikuti cursor
-- **Ripple Effects** pada button clicks
-- **Form Field Enhancements** dengan animasi focus/blur
-- **Loading States** dengan Netflix-style spinners
-- **Sound Effects** (optional) untuk interaksi
-- **Notification System** yang elegan
-
-### 📱 Form Components
-- **Nama Field**: Validasi real-time, minimum 2 karakter
-- **Dropdown Usia** dengan 3 pilihan:
-  1. Remaja (12-19 Tahun)
-  2. Dewasa Muda (20-30 Tahun)
-  3. Dewasa (31-70 Tahun)
-
-## 🚀 Installation & Setup
-
-1. **Clone/Download** project ke web server directory
-2. **Pastikan PHP 7.4+** enabled di server
-3. **Set permissions** untuk folder logs:
-   ```bash
-   chmod 755 logs/
-   ```
-4. **Access via browser**:
-   - Classic Version: `http://localhost/DetikBahagia/index.php`
-   - Enhanced Version: `http://localhost/DetikBahagia/homescreen.php`
-   - Demo Page: `http://localhost/DetikBahagia/demo.php`
-
-## 🎯 Usage Flow
-
-1. **Intro Sequence** - Logo N → Logo NETFLIX → Main Content
-2. **Form Input** - User mengisi nama dan kategori usia
-3. **Real-time Validation** - Feedback visual instant
-4. **AJAX Submission** - Submit tanpa reload page
-5. **Confirmation Page** - Halaman konfirmasi dengan confetti effect
-6. **Progress Tracking** - Session-based state management
-
-## 🛠 Technology Stack
-
-- **Frontend**: HTML5, CSS3, JavaScript ES6+
-- **Framework**: Tailwind CSS
-- **Backend**: PHP 7.4+
-- **Effects**: Custom CSS animations, WebGL particles
-- **Validation**: Client-side & Server-side
-- **Security**: Input sanitization, CSRF protection
-
-## 🎨 Design Specifications
-
-### Color Palette
-- **Primary Red**: #E50914 (Netflix signature)
-- **Dark Background**: #141414
-- **Secondary Dark**: #2d1b1b
-- **Text Light**: #cccccc
-- **Success Green**: #10B981
-- **Error Red**: #EF4444
-
-### Typography
-- **Primary Font**: Netflix Sans
-- **Fallback**: Arial, Helvetica, sans-serif
-- **Weights**: 300, 400, 500, 700, 800
-
-### Animations
-- **Duration**: 0.3s - 2s
-- **Easing**: cubic-bezier curves
-- **Performance**: 60fps optimized
-
-## 🔒 Security Features
-
-- Input sanitization dan validation
-- CSRF protection via sessions
-- SQL injection prevention
-- XSS protection dengan htmlspecialchars
-- Rate limiting untuk form submission
-
-## 📊 Browser Support
-
-- **Chrome**: 70+
-- **Firefox**: 65+
-- **Safari**: 12+
-- **Edge**: 79+
-- **Mobile**: iOS Safari 12+, Chrome Mobile 70+
-
-## ♿ Accessibility Features
-
-- **Screen Reader Support**: ARIA labels dan roles
-- **Keyboard Navigation**: Tab, Enter, Escape
-- **High Contrast Mode**: Support untuk prefers-contrast
-- **Reduced Motion**: Support untuk prefers-reduced-motion
-- **Focus Indicators**: Visible focus rings
-
-## 📝 Logging & Analytics
-
-Sistem automatically logs:
-- User submissions dengan timestamp
-- IP addresses dan User agents
-- Form validation errors
-- Performance metrics
-
-Log files tersimpan di: `logs/`
-
-## 🎉 Easter Eggs & Special Effects
-
-- **Konami Code**: ↑↑↓↓←→←→BA untuk special effects
-- **Confetti Animation** di halaman sukses
-- **Floating Hearts** effect
-- **Sound Effects** untuk interaksi (optional)
-- **Particle Explosions** pada click events
-
-## 🔧 Customization Guide
-
-### Database Integration
-Edit `includes/process_form.php`:
-```php
-function saveToDatabase($nama, $usia) {
-    $pdo = new PDO('mysql:host=localhost;dbname=detikbahagia', $username, $password);
-    $stmt = $pdo->prepare("INSERT INTO users (nama, usia, created_at) VALUES (?, ?, NOW())");
-    $stmt->execute([$nama, $usia]);
-    return $pdo->lastInsertId();
-}
-```
-
-### Theme Customization
-Edit `assets/css/netflix-enhanced.css` untuk:
-- Custom color schemes
-- Animation timing
-- Layout modifications
-- Typography adjustments
-
-### Adding New Effects
-Edit `assets/js/netflix-enhanced.js` untuk:
-- Custom particle effects
-- New animation sequences
-- Enhanced interactivity
-- Audio integration
-
-## 📈 Performance Optimization
-
-- **Lazy Loading** untuk images dan scripts
-- **CSS Minification** untuk production
-- **JavaScript Bundling** dengan modern ES modules
-- **Image Optimization** dengan WebP support
-- **Caching Strategy** untuk static assets
-
-## 🐛 Debugging & Development
-
-### Development Mode
-Set di `config.php`:
-```php
-define('ENVIRONMENT', 'development');
-```
-
-### Error Logging
-Cek file: `logs/php_errors.log`
-
-### Performance Monitoring
-Console.log timing dan metrics tersedia di browser developer tools
-
-## 📞 Support & Documentation
-
-- **Code Documentation**: Inline comments di semua files
-- **API Documentation**: PHPDoc format
-- **User Guide**: Built-in help tooltips
-- **Developer Notes**: Detailed comments untuk customization
-
-## 🏆 Best Practices
-
-- **Progressive Enhancement**: Fallbacks untuk JavaScript disabled
-- **Mobile First**: Responsive design dari mobile ke desktop
-- **Performance First**: Optimized untuk kecepatan loading
-- **Accessibility First**: WCAG 2.1 compliant
-- **Security First**: Input validation dan sanitization
-
-## 🔮 Future Enhancements
-
-- [ ] Dark/Light theme toggle
-- [ ] Multi-language support
-- [ ] Advanced analytics dashboard
-- [ ] API integration
-- [ ] Progressive Web App (PWA)
-- [ ] Real-time collaboration
-- [ ] Advanced form builder
-- [ ] Export functionality
 
 ---
 
-**© 2025 DetikBahagia - Netflix Style Questionnaire System**
+## 📊 Flow Diagram
 
-*Developed with modern web technologies and attention to detail for an exceptional user experience.*# DetikBahagia
+### User Journey - "Pernah Nonton"
+```mermaid
+graph LR
+    A[Index.php] --> B[Landing Page]
+    B --> C{Pilih: Pernah}
+    C --> D[Quiz Stranger Things]
+    D --> E[Select Season]
+    E --> F[Quiz Wednesday]
+    F --> G[Select Season]
+    G --> H[Quiz Squid Game]
+    H --> I[Select Season]
+    I --> J[Hasil.php]
+```
+
+### User Journey - "Belum Nonton"
+```mermaid
+graph LR
+    A[Index.php] --> B[Landing Page]
+    B --> C{Pilih: Belum}
+    C --> D[Kuisioner Durasi]
+    D --> E[Pilih Estimasi Waktu]
+    E --> F[Hasil.php]
+```
+
+---
+
+## 🎯 Sistem Kategorisasi
+
+### Range Berdasarkan Usia
+
+#### 👦 Remaja (12-19 tahun)
+| Kategori | Jam/Minggu | Jam/Hari | Warna |
+|----------|-----------|----------|-------|
+| 🟢 Sangat Ringan | < 7.1 | < 1.0 | Green |
+| 🔵 Ringan | 7.1 - 14.2 | 1.0 - 2.0 | Teal |
+| 🟠 Sedang | 14.2 - 21.3 | 2.0 - 3.0 | Orange |
+| 🔴 Berat | 21.3 - 28.4 | 3.0 - 4.1 | Red |
+| 🔴 Sangat Berat | > 28.4 | > 4.1 | Dark Red |
+
+#### 👨 Dewasa Muda & Dewasa (20-70 tahun)
+| Kategori | Jam/Minggu | Jam/Hari | Warna |
+|----------|-----------|----------|-------|
+| 🟢 Sangat Ringan | < 14.2 | < 2.0 | Green |
+| 🔵 Ringan | 14.2 - 28.4 | 2.0 - 4.1 | Teal |
+| 🟠 Sedang | 28.4 - 42.6 | 4.1 - 6.1 | Orange |
+| 🔴 Berat | 42.6 - 56.8 | 6.1 - 8.1 | Red |
+| 🔴 Sangat Berat | > 56.8 | > 8.1 | Dark Red |
+
+---
+
+## 💻 Instalasi
+
+### Prerequisites
+- PHP 7.4 atau lebih tinggi
+- Web server (Apache/Nginx)
+- Browser modern (Chrome, Firefox, Safari, Edge)
+
+### Langkah Instalasi
+
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/jouleee/DetikBahagia.git
+   cd DetikBahagia
+   ```
+
+2. **Setup Web Server**
+   
+   **Untuk XAMPP/WAMP:**
+   ```bash
+   # Copy folder ke htdocs/www
+   cp -r DetikBahagia C:/xampp/htdocs/
+   ```
+   
+   **Untuk PHP Built-in Server:**
+   ```bash
+   php -S localhost:8000
+   ```
+
+3. **Buat Folder Logs (opsional)**
+   ```bash
+   mkdir logs
+   chmod 755 logs
+   ```
+
+4. **Akses Aplikasi**
+   ```
+   http://localhost/DetikBahagia/
+   # atau
+   http://localhost:8000/
+   ```
+
+---
+
+## 🎨 Design System
+
+### Color Palette
+```css
+--netflix-red: #E50914;
+--netflix-dark: #141414;
+--netflix-black: #000000;
+--netflix-gray: #333333;
+
+/* Category Colors */
+--green: #10B981;     /* Sangat Ringan */
+--teal: #14B8A6;      /* Ringan */
+--orange: #F59E0B;    /* Sedang */
+--red: #EF4444;       /* Berat */
+--dark-red: #DC2626;  /* Sangat Berat */
+```
+
+### Typography
+- **Font Family**: Netflix Sans (via Google Fonts)
+- **Weights**: 400, 500, 700, 800, 900
+
+### Responsive Breakpoints
+```css
+sm: 640px    /* Mobile landscape, small tablets */
+md: 768px    /* Tablets */
+lg: 1024px   /* Desktop */
+xl: 1280px   /* Large desktop */
+2xl: 1536px  /* Extra large desktop */
+```
+
+---
+
+## 📝 API Endpoints
+
+### POST `/includes/process_form.php`
+Proses data user dari form awal
+```json
+{
+  "nama": "John Doe",
+  "usia": "remaja"
+}
+```
+
+### POST `/includes/save_choice.php`
+Save pilihan Pernah/Belum
+```json
+{
+  "choice": "belum",
+  "skip_quiz": true,
+  "timestamp": "2024-01-15T10:30:00Z"
+}
+```
+
+### POST `/includes/save-quiz.php`
+Save jawaban quiz per series
+```json
+{
+  "film": "stranger-things",
+  "question": "season",
+  "answer": "4"
+}
+```
+
+### POST `/includes/save-duration.php`
+Save estimasi durasi menonton
+```json
+{
+  "daily_hours": 2.0,
+  "weekly_hours": 14.2,
+  "total_minutes": 852,
+  "category": "B"
+}
+```
+
+---
+
+## 🔧 Konfigurasi
+
+### Session Data Structure
+```php
+$_SESSION['user_data'] = [
+    'nama' => 'John Doe',
+    'usia' => 'remaja',
+    'usia_label' => 'REMAJA 12 - 19 Tahun',
+    'usia_kategori' => 'Remaja',
+    'timestamp' => '2024-01-15 10:30:00'
+];
+
+$_SESSION['quiz_data'] = [
+    'stranger-things' => [
+        'watched' => 'pernah',
+        'season' => 4,
+        'duration' => 2096
+    ],
+    'wednesday' => [...],
+    'squid-game' => [...],
+    'total_duration' => 3500
+];
+```
+
+---
+
+## 🧪 Testing
+
+### Test Scenarios
+
+#### ✅ Test Case 1: Shortcut - Klik "Belum"
+```
+Landing Page → Klik "Belum" → Kuisioner Durasi → Hasil
+```
+
+#### ✅ Test Case 2: Semua "Pernah"
+```
+Landing Page → Quiz ST (Season 4) → Quiz W (Season 2) → Quiz SG (Season 2) → Hasil
+```
+
+#### ✅ Test Case 3: Mixed
+```
+Landing Page → Quiz ST (Pernah) → Quiz W (Belum) → Quiz SG (Belum) → Hasil
+```
+
+---
+
+## 📈 Logging
+
+Semua aktivitas user dicatat di folder `/logs/`:
+
+- **submissions.log** - Data user yang submit form
+- **choices.log** - Pilihan Pernah/Belum
+- **quiz-answers.log** - Jawaban per series
+- **duration-quiz.log** - Estimasi durasi menonton
+
+Format log:
+```
+[2024-01-15 10:30:22] User: John Doe | Film: stranger-things | Answer: pernah | Duration: 2096 min
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Silakan ikuti langkah berikut:
+
+1. Fork repository ini
+2. Buat branch baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 👥 Team
+
+**DetikBahagia Team**
+
+- Project Lead: [Your Name]
+- Developer: [Your Name]
+- Designer: [Your Name]
+
+---
+
+## 🙏 Acknowledgments
+
+- Netflix untuk inspirasi design
+- Tailwind CSS untuk framework CSS
+- Google Fonts untuk Netflix Sans font
+- Stranger Things, Wednesday, Squid Game untuk konten series
+
+---
+
+## 📞 Contact
+
+Project Link: [https://github.com/jouleee/DetikBahagia](https://github.com/jouleee/DetikBahagia)
+
+---
+
+<div align="center">
+  Made with ❤️ by DetikBahagia Team
+  
+  ⭐ Star this repo if you find it helpful!
+</div>

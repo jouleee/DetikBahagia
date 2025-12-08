@@ -33,11 +33,17 @@ if (!in_array($usia, $valid_usia)) {
     exit();
 }
 
-// Map usia to label
+// Map usia to label and category
 $usia_labels = [
     'remaja' => 'REMAJA 12 - 19 Tahun',
     'dewasa_muda' => 'DEWASA MUDA 20 - 30 Tahun',
     'dewasa' => 'DEWASA 31 - 70 Tahun'
+];
+
+$usia_kategori = [
+    'remaja' => 'Remaja',
+    'dewasa_muda' => 'Dewasa Muda',
+    'dewasa' => 'Dewasa'
 ];
 
 // Save to session
@@ -45,6 +51,7 @@ $_SESSION['user_data'] = [
     'nama' => htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'),
     'usia' => $usia,
     'usia_label' => $usia_labels[$usia],
+    'usia_kategori' => $usia_kategori[$usia], // Add category for quiz logic
     'timestamp' => date('Y-m-d H:i:s'),
     'ip_address' => $_SERVER['REMOTE_ADDR'] ?? 'unknown'
 ];

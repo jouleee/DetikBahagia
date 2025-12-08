@@ -303,31 +303,60 @@ $userData = $_SESSION['user_data'];
             // Show loading
             document.getElementById('loadingOverlay').classList.remove('hidden');
             
-            // Save choice to session
-            fetch('includes/save_choice.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    choice: choice,
-                    timestamp: new Date().toISOString()
+            // If "Belum", go directly to duration questionnaire
+            if (choice === 'belum') {
+                // Initialize session with all "belum"
+                fetch('includes/save_choice.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        choice: 'belum',
+                        skip_quiz: true,
+                        timestamp: new Date().toISOString()
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Choice saved:', data);
-                
-                setTimeout(() => {
-                    // Redirect ke flow kuisioner - dimulai dari Stranger Things
-                    window.location.href = 'pages/landing-stranger-things.php';
-                }, 1000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('loadingOverlay').classList.add('hidden');
-                showNotification('Terjadi kesalahan. Silakan coba lagi.', 'error');
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Choice saved:', data);
+                    setTimeout(() => {
+                        // Redirect to duration questionnaire
+                        window.location.href = 'pages/kuisioner-durasi.php';
+                    }, 1000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('loadingOverlay').classList.add('hidden');
+                    showNotification('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                });
+            } else {
+                // If "Pernah", go to normal quiz flow
+                fetch('includes/save_choice.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        choice: choice,
+                        timestamp: new Date().toISOString()
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Choice saved:', data);
+                    
+                    setTimeout(() => {
+                        // Redirect ke flow kuisioner - dimulai dari Stranger Things
+                        window.location.href = 'pages/landing-stranger-things.php';
+                    }, 1000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('loadingOverlay').classList.add('hidden');
+                    showNotification('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                });
+            }
         }
 
         // Notification system

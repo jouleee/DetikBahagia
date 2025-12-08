@@ -121,7 +121,20 @@ $userData = $_SESSION['user_data'];
                 if (data.success) {
                     setTimeout(() => {
                         if (selectedValue === 'belum') {
-                            window.location.href = 'hasil.php';
+                            // Check if all series are "belum"
+                            const quizData = data.data.quiz_data;
+                            const allBelum = 
+                                quizData['stranger-things'].watched === 'belum' &&
+                                quizData['wednesday'].watched === 'belum' &&
+                                quizData['squid-game'].watched === 'belum';
+                            
+                            if (allBelum) {
+                                // Redirect to duration questionnaire
+                                window.location.href = 'kuisioner-durasi.php';
+                            } else {
+                                // Redirect to result page
+                                window.location.href = 'hasil.php';
+                            }
                         } else {
                             window.location.href = 'quiz-squid-game-season.php';
                         }
