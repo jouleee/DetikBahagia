@@ -70,13 +70,17 @@ $_SESSION['quiz_data']['total_duration'] =
 // Log to file (optional)
 $answerLog = is_array($answer) ? json_encode($answer) : $answer;
 $logEntry = sprintf(
-    "[%s] User: %s | Film: %s | Question: %s | Answer: %s | Duration: %d min\n",
+    "[%s] User: %s | Film: %s | Question: %s | Answer: %s | Duration: %d min | ST: %d | W: %d | SG: %d | TOTAL: %d\n",
     date('Y-m-d H:i:s'),
     $_SESSION['user_data']['nama'] ?? 'Unknown',
     $film,
     $question,
     $answerLog,
-    $_SESSION['quiz_data'][$film]['duration'] ?? 0
+    $_SESSION['quiz_data'][$film]['duration'] ?? 0,
+    $_SESSION['quiz_data']['stranger-things']['duration'] ?? 0,
+    $_SESSION['quiz_data']['wednesday']['duration'] ?? 0,
+    $_SESSION['quiz_data']['squid-game']['duration'] ?? 0,
+    $_SESSION['quiz_data']['total_duration'] ?? 0
 );
 
 $logFile = __DIR__ . '/../logs/quiz-answers.log';

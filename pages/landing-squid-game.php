@@ -35,7 +35,7 @@ $userData = $_SESSION['user_data'];
     <style>
         body {
             font-family: 'Netflix Sans', Arial, sans-serif;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
                         url('../assets/images/Squid Game Banner.webp');
             background-size: cover;
             background-position: center;
@@ -57,6 +57,65 @@ $userData = $_SESSION['user_data'];
             background: #E50914;
             width: 100%;
             transition: width 0.3s ease;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .play-overlay:hover {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+        }
+        
+        .play-overlay:hover .play-button {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(229, 9, 20, 0.8);
+        }
+        
+        .play-button {
+            width: 100px;
+            height: 100px;
+            background: rgba(229, 9, 20, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+        }
+        
+        @media (max-width: 640px) {
+            .play-button {
+                width: 70px;
+                height: 70px;
+            }
         }
     </style>
 </head>
@@ -83,24 +142,18 @@ $userData = $_SESSION['user_data'];
                     <p class="text-gray-300 text-xs sm:text-sm md:text-base px-2 sm:px-0">Sudah nonton? Isi kuisionernya sekarang</p>
                 </div>
 
-                <!-- Film Banner -->
-                <div class="relative rounded-xl sm:rounded-2xl overflow-hidden mb-6 sm:mb-8 shadow-2xl">
-                    <img src="../assets/images/Squid Game Banner.webp" alt="Squid Game Banner" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                </div>
-
-                <!-- Film Description -->
-                <div class="mb-6 sm:mb-8 text-center sm:text-left px-2 sm:px-0">
-                    <p class="text-gray-300 text-xs sm:text-sm md:text-base lg:text-base leading-relaxed">
-                        Squid Game adalah serial televisi survival drama Korea Selatan yang dibintangi oleh Lee Jung-jae dan Park Hae-soo. Ratusan orang yang putus asa secara finansial menerima undangan misterius untuk berkompetisi dalam permainan anak-anak. Di balik setiap permainan ada hadiah yang menggoda - tetapi taruhannya mematikan.
-                    </p>
-                </div>
-
-                <!-- User Info -->
-                <div class="bg-gray-900 bg-opacity-50 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-6 sm:mb-8 mx-2 sm:mx-0">
-                    <p class="text-xs sm:text-sm text-gray-400">Pengisi Kuisioner:</p>
-                    <p class="text-sm sm:text-base md:text-lg font-semibold text-white"><?php echo htmlspecialchars($userData['nama']); ?></p>
-                    <p class="text-xs sm:text-sm text-gray-400"><?php echo htmlspecialchars($userData['usia_label']); ?></p>
+                <!-- Video Player -->
+                <div class="mb-6 sm:mb-8 lg:mb-10">
+                    <div class="video-container" id="videoContainer">
+                        <div class="play-overlay" id="playOverlay" onclick="playVideo()">
+                            <div class="play-button">
+                                <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div id="player"></div>
+                    </div>
                 </div>
 
                 <!-- CTA Button -->
@@ -133,5 +186,63 @@ $userData = $_SESSION['user_data'];
             </div>
         </div>
     </div>
+
+    <!-- YouTube IFrame API -->
+    <script>
+        var player;
+        var playerReady = false;
+        
+        // Load YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // Initialize player when API is ready
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'zgGTVaG2UiQ', // Squid Game trailer
+                playerVars: {
+                    'playsinline': 1,
+                    'autoplay': 0,
+                    'controls': 1,
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'fs': 1, // Enable fullscreen
+                    'hd': 1,
+                    'vq': 'hd2160' // Request 4K quality
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            playerReady = true;
+            // Set quality to highest available
+            var availableQualityLevels = player.getAvailableQualityLevels();
+            if (availableQualityLevels.length > 0) {
+                player.setPlaybackQuality(availableQualityLevels[0]);
+            }
+        }
+        
+        function onPlayerStateChange(event) {
+            // Hide overlay when video starts playing
+            if (event.data == YT.PlayerState.PLAYING) {
+                document.getElementById('playOverlay').style.display = 'none';
+            }
+        }
+        
+        function playVideo() {
+            if (playerReady) {
+                player.playVideo();
+                document.getElementById('playOverlay').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

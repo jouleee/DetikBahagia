@@ -135,3 +135,62 @@
 [2025-12-08 18:34:04] User: Julian Dwi Satrio | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413},{"season":"2","minutes":463},{"season":"2","minutes":463}] | Duration: 1339 min
 [2025-12-08 18:34:08] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min
 [2025-12-08 18:34:11] User: Julian Dwi Satrio | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496},{"season":"1","minutes":496},{"season":"2","minutes":428},{"season":"2","minutes":428}] | Duration: 1848 min
+[2025-12-08 18:50:51] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:50:54] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"1","minutes":406}] | Duration: 812 min | ST: 812 | W: 0 | SG: 0 | TOTAL: 812
+[2025-12-08 18:51:06] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"1","minutes":406}] | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:51:16] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: belum | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:51:30] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: belum | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:51:59] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:52:02] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"1","minutes":406}] | Duration: 812 min | ST: 812 | W: 0 | SG: 0 | TOTAL: 812
+[2025-12-08 18:52:05] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: belum | Duration: 0 min | ST: 812 | W: 0 | SG: 0 | TOTAL: 812
+[2025-12-08 18:52:08] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: belum | Duration: 0 min | ST: 812 | W: 0 | SG: 0 | TOTAL: 812
+[2025-12-08 18:53:26] User: Julian | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:53:39] User: Julian | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"1","minutes":406}] | Duration: 812 min | ST: 812 | W: 0 | SG: 0 | TOTAL: 812
+[2025-12-08 18:53:51] User: Julian | Film: stranger-things | Question: season | Answer: [{"season":"2","minutes":467},{"season":"2","minutes":467}] | Duration: 934 min | ST: 934 | W: 0 | SG: 0 | TOTAL: 934
+[2025-12-08 18:54:13] User: Julian | Film: stranger-things | Question: season | Answer: [{"season":"2","minutes":467},{"season":"2","minutes":467}] | Duration: -406 min | ST: -406 | W: 0 | SG: 0 | TOTAL: -406
+[2025-12-08 18:55:06] User: Julian | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:55:14] User: Julian | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"1","minutes":406}] | Duration: 812 min | ST: 812 | W: 0 | SG: 0 | TOTAL: 812
+[2025-12-08 18:57:44] User: Joel | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:57:51] User: Joel | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406}] | Duration: 406 min | ST: 406 | W: 0 | SG: 0 | TOTAL: 406
+[2025-12-08 18:58:01] User: Joel | Film: wednesday | Question: watched | Answer: pernah | Duration: 0 min | ST: 406 | W: 0 | SG: 0 | TOTAL: 406
+[2025-12-08 18:58:12] User: Joel | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413}] | Duration: 413 min | ST: 406 | W: 413 | SG: 0 | TOTAL: 819
+[2025-12-08 18:58:27] User: Joel | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min | ST: 406 | W: 413 | SG: 0 | TOTAL: 819
+[2025-12-08 18:58:37] User: Joel | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496}] | Duration: 496 min | ST: 406 | W: 413 | SG: 496 | TOTAL: 1315
+[2025-12-08 18:59:24] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 18:59:35] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"2","minutes":467}] | Duration: 467 min | ST: 467 | W: 0 | SG: 0 | TOTAL: 467
+[2025-12-08 18:59:45] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: pernah | Duration: 0 min | ST: 467 | W: 0 | SG: 0 | TOTAL: 467
+[2025-12-08 19:00:02] User: Julian Dwi Satrio | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413},{"season":"2","minutes":463}] | Duration: 876 min | ST: 467 | W: 876 | SG: 0 | TOTAL: 1343
+[2025-12-08 19:00:11] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: belum | Duration: 0 min | ST: 467 | W: 876 | SG: 0 | TOTAL: 1343
+[2025-12-08 19:10:30] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 19:10:33] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"3","minutes":439},{"season":"2","minutes":467}] | Duration: 906 min | ST: 906 | W: 0 | SG: 0 | TOTAL: 906
+[2025-12-08 19:10:36] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: pernah | Duration: 0 min | ST: 906 | W: 0 | SG: 0 | TOTAL: 906
+[2025-12-08 19:10:39] User: Julian Dwi Satrio | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413},{"season":"2","minutes":463}] | Duration: 876 min | ST: 906 | W: 876 | SG: 0 | TOTAL: 1782
+[2025-12-08 19:10:43] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min | ST: 906 | W: 876 | SG: 0 | TOTAL: 1782
+[2025-12-08 19:10:45] User: Julian Dwi Satrio | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496},{"season":"2","minutes":428}] | Duration: 924 min | ST: 906 | W: 876 | SG: 924 | TOTAL: 2706
+[2025-12-08 19:13:36] User: Joel | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 19:13:39] User: Joel | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"2","minutes":467}] | Duration: 873 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-08 19:13:41] User: Joel | Film: wednesday | Question: watched | Answer: belum | Duration: 0 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-08 19:13:44] User: Joel | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-08 19:13:51] User: Joel | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496}] | Duration: 496 min | ST: 873 | W: 0 | SG: 496 | TOTAL: 1369
+[2025-12-08 19:14:20] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-08 19:14:23] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"2","minutes":467}] | Duration: 873 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-08 19:14:25] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: belum | Duration: 0 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-08 19:14:28] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: belum | Duration: 0 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-12 06:04:09] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-12 06:04:12] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"3","minutes":439},{"season":"2","minutes":467}] | Duration: 906 min | ST: 906 | W: 0 | SG: 0 | TOTAL: 906
+[2025-12-12 06:04:17] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: pernah | Duration: 0 min | ST: 906 | W: 0 | SG: 0 | TOTAL: 906
+[2025-12-12 06:04:20] User: Julian Dwi Satrio | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413},{"season":"2","minutes":463}] | Duration: 876 min | ST: 906 | W: 876 | SG: 0 | TOTAL: 1782
+[2025-12-12 06:04:24] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min | ST: 906 | W: 876 | SG: 0 | TOTAL: 1782
+[2025-12-12 06:04:26] User: Julian Dwi Satrio | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496}] | Duration: 496 min | ST: 906 | W: 876 | SG: 496 | TOTAL: 2278
+[2025-12-12 06:04:52] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-12 06:04:55] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"2","minutes":467},{"season":"3","minutes":439}] | Duration: 906 min | ST: 906 | W: 0 | SG: 0 | TOTAL: 906
+[2025-12-12 06:04:58] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: pernah | Duration: 0 min | ST: 906 | W: 0 | SG: 0 | TOTAL: 906
+[2025-12-12 06:05:01] User: Julian Dwi Satrio | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413},{"season":"2","minutes":463}] | Duration: 876 min | ST: 906 | W: 876 | SG: 0 | TOTAL: 1782
+[2025-12-12 06:05:03] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min | ST: 906 | W: 876 | SG: 0 | TOTAL: 1782
+[2025-12-12 06:05:06] User: Julian Dwi Satrio | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496}] | Duration: 496 min | ST: 906 | W: 876 | SG: 496 | TOTAL: 2278
+[2025-12-12 16:39:00] User: Julian Dwi Satrio | Film: stranger-things | Question: watched | Answer: pernah | Duration: 0 min | ST: 0 | W: 0 | SG: 0 | TOTAL: 0
+[2025-12-12 16:39:03] User: Julian Dwi Satrio | Film: stranger-things | Question: season | Answer: [{"season":"1","minutes":406},{"season":"2","minutes":467}] | Duration: 873 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-12 16:39:15] User: Julian Dwi Satrio | Film: wednesday | Question: watched | Answer: pernah | Duration: 0 min | ST: 873 | W: 0 | SG: 0 | TOTAL: 873
+[2025-12-12 16:39:19] User: Julian Dwi Satrio | Film: wednesday | Question: season | Answer: [{"season":"1","minutes":413},{"season":"2","minutes":463}] | Duration: 876 min | ST: 873 | W: 876 | SG: 0 | TOTAL: 1749
+[2025-12-12 16:39:22] User: Julian Dwi Satrio | Film: squid-game | Question: watched | Answer: pernah | Duration: 0 min | ST: 873 | W: 876 | SG: 0 | TOTAL: 1749
+[2025-12-12 16:39:25] User: Julian Dwi Satrio | Film: squid-game | Question: season | Answer: [{"season":"1","minutes":496},{"season":"2","minutes":428},{"season":"3","minutes":366}] | Duration: 1290 min | ST: 873 | W: 876 | SG: 1290 | TOTAL: 3039

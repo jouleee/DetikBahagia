@@ -50,7 +50,7 @@ $userData = $_SESSION['user_data'];
 
                 <form id="quizForm">
                     <div class="space-y-4 mb-8">
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 496)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 496, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="496" class="hidden" data-season="1">
                                 <div class="flex-1">
@@ -62,7 +62,7 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 428)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 428, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="428" class="hidden" data-season="2">
                                 <div class="flex-1">
@@ -74,7 +74,7 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 366)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 366, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="366" class="hidden" data-season="3">
                                 <div class="flex-1">
@@ -113,7 +113,9 @@ $userData = $_SESSION['user_data'];
         let totalMinutes = 0;
         let selectedSeasons = [];
 
-        function toggleOption(card, minutes) {
+        function toggleOption(card, minutes, event) {
+            if (event) event.preventDefault();
+            
             const checkbox = card.querySelector('input[type="checkbox"]');
             const checkIcon = card.querySelector('.check-icon');
             
@@ -143,6 +145,9 @@ $userData = $_SESSION['user_data'];
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
             if (selectedSeasons.length === 0) return;
+            
+            console.log('Squid Game - Selected Seasons:', selectedSeasons);
+            console.log('Squid Game - Total Minutes:', totalMinutes);
             
             // Show loading overlay
             showLoading();

@@ -102,7 +102,7 @@ $userData = $_SESSION['user_data'];
                     <input type="hidden" name="question" value="season">
                     
                     <div class="space-y-4 mb-8">
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 406)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 406, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="406" class="hidden" data-season="1">
                                 <div class="flex-1">
@@ -114,7 +114,7 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 467)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 467, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="467" class="hidden" data-season="2">
                                 <div class="flex-1">
@@ -126,7 +126,7 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 439)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 439, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="439" class="hidden" data-season="3">
                                 <div class="flex-1">
@@ -138,7 +138,7 @@ $userData = $_SESSION['user_data'];
                             </label>
                         </div>
 
-                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 782)">
+                        <div class="option-card bg-gray-800 bg-opacity-50 border-2 border-gray-700 rounded-xl p-5" onclick="toggleOption(this, 782, event)">
                             <label class="flex items-center cursor-pointer">
                                 <input type="checkbox" name="season[]" value="782" class="hidden" data-season="4">
                                 <div class="flex-1">
@@ -190,7 +190,9 @@ $userData = $_SESSION['user_data'];
         let totalMinutes = 0;
         let selectedSeasons = [];
 
-        function toggleOption(card, minutes) {
+        function toggleOption(card, minutes, event) {
+            if (event) event.preventDefault();
+            
             const checkbox = card.querySelector('input[type="checkbox"]');
             const checkIcon = card.querySelector('.check-icon');
             
@@ -221,6 +223,9 @@ $userData = $_SESSION['user_data'];
             e.preventDefault();
             
             if (selectedSeasons.length === 0) return;
+            
+            console.log('Stranger Things - Selected Seasons:', selectedSeasons);
+            console.log('Stranger Things - Total Minutes:', totalMinutes);
             
             // Show loading overlay
             showLoading();
